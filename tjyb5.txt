@@ -1,0 +1,11 @@
+
+mysql> create table user(id int auto_increment primary key,name varchar(20) not null,method varchar(10) not null,time varchar(20) not null);
+mysql> insert into user(name,method,time) values("lk","app","2018-10-01"), ("zyq","website","2018-11-01"),("hna","ipad","2018-11-15");
+mysql> select case when abs(datediff(time,now()))>30 then"niqusiba" when abs(datediff(time,now()))>9 then "nitemehuibuhuilai" when abs(datediff(time,now()))>7 then "kuaihuilaixiaotiancai" end from user;
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| case when abs(datediff(time,now()))>30 then"niqusiba" when abs(datediff(time,now()))>9 then "nitemehuibuhuilai" when abs(datediff(time,now()))>7 then "kuaihuilaixiaotiancai" end |
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| niqusiba                                                                                                                                                                          |
+| nitemehuibuhuilai                                                                                                                                                                 |
+| kuaihuilaixiaotiancai                                                                                                                                                             |
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+

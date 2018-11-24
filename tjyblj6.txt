@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<body lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>liujing</title>
+</head>
+<body>
+<h1>&lt&ltSympathy For The Peasants&gt&gt</h1>
+<p>Hoeing millet mid-day heat,</p>
+<p>Sweat dripping to the earth beneath.</p>
+<p>Do you know the food on your plate,</p>
+<p>Each grain was hard-earned mate.</p>
+</body>
+</html>
+
+
+
+<<Sympathy For The Peasants>>
+
+Hoeing millet mid-day heat,
+
+Sweat dripping to the earth beneath.
+
+Do you know the food on your plate,
+
+Each grain was hard-earned mate.

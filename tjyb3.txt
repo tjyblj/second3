@@ -1,0 +1,56 @@
+liu@ubuntu:~$ sudo mysql -u root -p
+mysql> Use hello_mysql;
+mysql> select database();
++-------------+
+| database()  |
++-------------+
+| hello_mysql |
++-------------+
+mysql> show create database hello_mysql;
++-------------+----------------------------------------------------------------------+
+| Database    | Create Database                                                      |
++-------------+----------------------------------------------------------------------+
+| hello_mysql | CREATE DATABASE `hello_mysql` /*!40100 DEFAULT CHARACTER SET utf8 */ |
++-------------+----------------------------------------------------------------------  
+mysql> create table list(id int auto_increment primary key,film varchar(30) not null,year varchar(20) not null,director varchar(20) not null,grade varchar(20) not null);
+mysql> insert into list(film,year,director,grade) Values("ying","2018","zhangyimou","8.2"),("xiyoujizhidanaotiangong","2014","zhengbaorui","4.1"),("xiaoshenkedejiushu","1994","feiluolan","9.6"),("bawangbiejji","1993","chenkaige","9.6"),("taitannikehao","1997","zhanmusi","9.3");
+mysql> select*from list;
++----+-------------------------+------+-------------+-------+
+| id | film                    | year | director    | grade |
++----+-------------------------+------+-------------+-------+
+|  1 | ying                    | 2018 | zhangyimou  | 8.2   |
+|  2 | xiyoujizhidanaotiangong | 2014 | zhengbaorui | 4.1   |
+|  3 | xiaoshenkedejiushu      | 1994 | feiluolan   | 9.6   |
+|  4 | bawangbiejji            | 1993 | chenkaige   | 9.6   |
+|  5 | taitannikehao           | 1997 | zhanmusi    | 9.3   |
++----+-------------------------+------+-------------+-------+
+
+mysql> select*from list where film like"%danaotiangong";
++----+-------------------------+------+-------------+-------+
+| id | film                    | year | director    | grade |
++----+-------------------------+------+-------------+-------+
+|  2 | xiyoujizhidanaotiangong | 2014 | zhengbaorui | 4.1   |
++----+-------------------------+------+-------------+-------+
+
+mysql> select*from list where director like"chenkai%";
++----+--------------+------+-----------+-------+
+| id | film         | year | director  | grade |
++----+--------------+------+-----------+-------+
+|  4 | bawangbiejji | 1993 | chenkaige | 9.6   |
++----+--------------+------+-----------+-------+
+
+mysql> select film from list where year="2018";
++------+
+| film |
++------+
+| ying |
++------+
+
+mysql> select*from list where list.grade in (select max(grade) from list);
++----+--------------------+------+-----------+-------+
+| id | film               | year | director  | grade |
++----+--------------------+------+-----------+-------+
+|  3 | xiaoshenkedejiushu | 1994 | feiluolan | 9.6   |
+|  4 | bawangbiejji       | 1993 | chenkaige | 9.6   |
++----+--------------------+------+-----------+-------+
+

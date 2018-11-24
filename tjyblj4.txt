@@ -1,0 +1,72 @@
+ sudo mysql -u root -p
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| business_mysql     |
+| hello_mysql        |
+| mysql              |
+| performance_schema |
+| sys                |
+| taobao_mysql       |
++--------------------+
+mysql> use hello_mysql;
+mysql> create table collect(id int auto_increment primary key,name varchar(30) not null,birthplace varchar(30) not null ,age varchar(20) not null);
+mysql> select*from collect;
+mysql> insert into collect(id,name,birthplace,age) Values(1,"zjl","usa","23"),(2,"lmy","china","22"),(3,"lmq","england","20"),(4,"psh","europe","20"),(5,"sy","africa","21");
+mysql> select*from collect;
++----+------+------------+-----+
+| id | name | birthplace | age |
++----+------+------------+-----+
+|  1 | zjl  | usa        | 23  |
+|  2 | lmy  | china      | 22  |
+|  3 | lmq  | england    | 20  |
+|  4 | psh  | europe     | 20  |
+|  5 | sy   | africa     | 21  |
++----+------+------------+-----+
+
+mysql> delete from collect where name ="sy";
+mysql> select*from collect;
++----+------+------------+-----+
+| id | name | birthplace | age |
++----+------+------------+-----+
+|  1 | zjl  | usa        | 23  |
+|  2 | lmy  | china      | 22  |
+|  3 | lmq  | england    | 20  |
+|  4 | psh  | europe     | 20  |
++----+------+------------+-----+
+
+
+mysql> select name from collect where age =23;
++------+
+| name |
++------+
+| zjl  |
++------+
+
+
+mysql> select*from collect where collect.age in(20,21);
++----+------+------------+-----+
+| id | name | birthplace | age |
++----+------+------------+-----+
+|  3 | lmq  | england    | 20  |
+|  4 | psh  | europe     | 20  |
++----+------+------------+-----+
+mysql> select*from collect where collect.id in(select min(id) from collect group by age having count(age)>1);
++----+------+------------+-----+
+| id | name | birthplace | age |
++----+------+------------+-----+
+|  3 | lmq  | england    | 20  |
++----+------+------------+-----+
+mysql> select*from collect where collect.id not in(select min(id) from collect group by age having count(age)>1);
++----+------+------------+-----+
+| id | name | birthplace | age |
++----+------+------------+-----+
+|  1 | zjl  | usa        | 23  |
+|  2 | lmy  | china      | 22  |
+|  4 | psh  | europe     | 20  |
++----+------+------------+-----+
+
+
